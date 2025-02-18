@@ -19,6 +19,8 @@ namespace ApiParaLocalizarTransporte.Repositories
         }
         public async Task<T?> GetAsync(Expression<Func<T, bool>> predicate)
         {
+            //return await _context.Set<T>().AsNoTracking().FirstOrDefaultAsync(predicate);
+
             return await _context.Set<T>().AsNoTracking().FirstOrDefaultAsync(predicate);
         }
         public T Create(T entity)
@@ -36,12 +38,6 @@ namespace ApiParaLocalizarTransporte.Repositories
             _context.Set<T>().Remove(entity);
             return entity;
         }
-
-        public async Task CommitAsync()
-        {
-            await _context.SaveChangesAsync();
-        }
-
 
     }
 }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiParaLocalizarTransporte.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250128181909_projetoInicialDB")]
-    partial class projetoInicialDB
+    [Migration("20250217191629_criarNovoDB")]
+    partial class criarNovoDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,7 +40,7 @@ namespace ApiParaLocalizarTransporte.Migrations
 
                     b.HasKey("LinhaId");
 
-                    b.ToTable("linhas");
+                    b.ToTable("Linhas");
                 });
 
             modelBuilder.Entity("ApiParaLocalizarTransporte.Models.Parada", b =>
@@ -58,13 +58,12 @@ namespace ApiParaLocalizarTransporte.Migrations
                         .HasColumnType("decimal(10,7)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasMaxLength(60)
                         .HasColumnType("varchar(60)");
 
                     b.HasKey("ParadaId");
 
-                    b.ToTable("paradas");
+                    b.ToTable("Paradas");
                 });
 
             modelBuilder.Entity("ApiParaLocalizarTransporte.Models.PosicaoVeiculo", b =>
@@ -88,7 +87,7 @@ namespace ApiParaLocalizarTransporte.Migrations
 
                     b.HasIndex("VeiculoId");
 
-                    b.ToTable("posicaoVeiculos");
+                    b.ToTable("PosicaoVeiculos");
                 });
 
             modelBuilder.Entity("ApiParaLocalizarTransporte.Models.Veiculo", b =>
@@ -119,7 +118,7 @@ namespace ApiParaLocalizarTransporte.Migrations
 
                     b.HasIndex("LinhaId");
 
-                    b.ToTable("veiculos");
+                    b.ToTable("Veiculos");
                 });
 
             modelBuilder.Entity("LinhaParada", b =>

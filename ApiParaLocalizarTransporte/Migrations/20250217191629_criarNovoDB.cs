@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ApiParaLocalizarTransporte.Migrations
 {
     /// <inheritdoc />
-    public partial class projetoInicialDB : Migration
+    public partial class criarNovoDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,7 +15,7 @@ namespace ApiParaLocalizarTransporte.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "linhas",
+                name: "Linhas",
                 columns: table => new
                 {
                     LinhaId = table.Column<int>(type: "int", nullable: false)
@@ -25,29 +25,29 @@ namespace ApiParaLocalizarTransporte.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_linhas", x => x.LinhaId);
+                    table.PrimaryKey("PK_Linhas", x => x.LinhaId);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "paradas",
+                name: "Paradas",
                 columns: table => new
                 {
                     ParadaId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "varchar(60)", maxLength: 60, nullable: false)
+                    Name = table.Column<string>(type: "varchar(60)", maxLength: 60, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Latitude = table.Column<decimal>(type: "decimal(10,7)", nullable: false),
                     Longitude = table.Column<decimal>(type: "decimal(10,7)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_paradas", x => x.ParadaId);
+                    table.PrimaryKey("PK_Paradas", x => x.ParadaId);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "veiculos",
+                name: "Veiculos",
                 columns: table => new
                 {
                     VeiculoId = table.Column<int>(type: "int", nullable: false)
@@ -61,11 +61,11 @@ namespace ApiParaLocalizarTransporte.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_veiculos", x => x.VeiculoId);
+                    table.PrimaryKey("PK_Veiculos", x => x.VeiculoId);
                     table.ForeignKey(
-                        name: "FK_veiculos_linhas_LinhaId",
+                        name: "FK_Veiculos_Linhas_LinhaId",
                         column: x => x.LinhaId,
-                        principalTable: "linhas",
+                        principalTable: "Linhas",
                         principalColumn: "LinhaId");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
@@ -81,22 +81,22 @@ namespace ApiParaLocalizarTransporte.Migrations
                 {
                     table.PrimaryKey("PK_LinhaParada", x => new { x.LinhasLinhaId, x.ParadasParadaId });
                     table.ForeignKey(
-                        name: "FK_LinhaParada_linhas_LinhasLinhaId",
+                        name: "FK_LinhaParada_Linhas_LinhasLinhaId",
                         column: x => x.LinhasLinhaId,
-                        principalTable: "linhas",
+                        principalTable: "Linhas",
                         principalColumn: "LinhaId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_LinhaParada_paradas_ParadasParadaId",
+                        name: "FK_LinhaParada_Paradas_ParadasParadaId",
                         column: x => x.ParadasParadaId,
-                        principalTable: "paradas",
+                        principalTable: "Paradas",
                         principalColumn: "ParadaId",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "posicaoVeiculos",
+                name: "PosicaoVeiculos",
                 columns: table => new
                 {
                     PosicaoVeiculoId = table.Column<int>(type: "int", nullable: false)
@@ -107,11 +107,11 @@ namespace ApiParaLocalizarTransporte.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_posicaoVeiculos", x => x.PosicaoVeiculoId);
+                    table.PrimaryKey("PK_PosicaoVeiculos", x => x.PosicaoVeiculoId);
                     table.ForeignKey(
-                        name: "FK_posicaoVeiculos_veiculos_VeiculoId",
+                        name: "FK_PosicaoVeiculos_Veiculos_VeiculoId",
                         column: x => x.VeiculoId,
-                        principalTable: "veiculos",
+                        principalTable: "Veiculos",
                         principalColumn: "VeiculoId",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -123,13 +123,13 @@ namespace ApiParaLocalizarTransporte.Migrations
                 column: "ParadasParadaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_posicaoVeiculos_VeiculoId",
-                table: "posicaoVeiculos",
+                name: "IX_PosicaoVeiculos_VeiculoId",
+                table: "PosicaoVeiculos",
                 column: "VeiculoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_veiculos_LinhaId",
-                table: "veiculos",
+                name: "IX_Veiculos_LinhaId",
+                table: "Veiculos",
                 column: "LinhaId");
         }
 
@@ -140,16 +140,16 @@ namespace ApiParaLocalizarTransporte.Migrations
                 name: "LinhaParada");
 
             migrationBuilder.DropTable(
-                name: "posicaoVeiculos");
+                name: "PosicaoVeiculos");
 
             migrationBuilder.DropTable(
-                name: "paradas");
+                name: "Paradas");
 
             migrationBuilder.DropTable(
-                name: "veiculos");
+                name: "Veiculos");
 
             migrationBuilder.DropTable(
-                name: "linhas");
+                name: "Linhas");
         }
     }
 }

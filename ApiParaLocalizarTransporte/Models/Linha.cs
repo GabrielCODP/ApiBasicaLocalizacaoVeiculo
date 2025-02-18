@@ -16,6 +16,5 @@ namespace ApiParaLocalizarTransporte.Models
         {
             Paradas = new Collection<Parada>();
         }
-
     }
 }

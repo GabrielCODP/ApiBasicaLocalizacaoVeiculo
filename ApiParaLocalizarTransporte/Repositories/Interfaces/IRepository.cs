@@ -9,6 +9,5 @@ namespace ApiParaLocalizarTransporte.Repositories.Interfaces
         T Create(T entity);
         T Update(T entity);
         T Delete(T entity);
-        Task CommitAsync();
     }
 }
