@@ -1,6 +1,6 @@
-﻿using ApiParaLocalizarTransporte.Filters;
+﻿using ApiParaLocalizarTransporte.DTOS.LinhaDTOs;
+using ApiParaLocalizarTransporte.Filters;
 using ApiParaLocalizarTransporte.Models;
-using ApiParaLocalizarTransporte.Models.DTOs.LinhaDTOs;
 using ApiParaLocalizarTransporte.Repositories.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
@@ -37,7 +37,6 @@ namespace ApiParaLocalizarTransporte.Controllers
             return Ok(linhasResponseDTO);
         }
 
-
         [HttpGet("com-paradas", Name = "ObterLinhasComParadas")]
         public async Task<ActionResult<IEnumerable<LinhaEParadaResponseDTO>>> GetLinhasComParadas()
         {
@@ -52,10 +51,6 @@ namespace ApiParaLocalizarTransporte.Controllers
 
             return Ok(linhasResponseDTO);
         }
-
-
-
-
 
         [HttpGet("{id:int:min(1)}", Name = "ObterLinha")]
         public async Task<ActionResult<LinhaResponseDTO>> GetLinha(int id)
@@ -79,6 +74,7 @@ namespace ApiParaLocalizarTransporte.Controllers
             {
                 return BadRequest();
             }
+
             var linha = _mapper.Map<Linha>(linhaCreate);
 
             var linhaCriada = _unitOfWork.LinhaRepository.Create(linha);
@@ -127,6 +123,13 @@ namespace ApiParaLocalizarTransporte.Controllers
             if (id != linhaUpdate.LinhaId)
             {
                 return BadRequest();
+            }
+
+            var buscarlinha = await _unitOfWork.LinhaRepository.GetAsync(l => l.LinhaId == id);
+
+            if (buscarlinha is null)
+            {
+                return NotFound("Linha não encontrada....");
             }
 
             var linha = _mapper.Map<Linha>(linhaUpdate);

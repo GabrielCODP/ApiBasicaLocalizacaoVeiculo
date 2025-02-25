@@ -1,7 +1,7 @@
 ﻿using ApiParaLocalizarTransporte.Context;
+using ApiParaLocalizarTransporte.DTOS.ParadaDTOs;
 using ApiParaLocalizarTransporte.Filters;
 using ApiParaLocalizarTransporte.Models;
-using ApiParaLocalizarTransporte.Models.DTOs.ParadaDTOs;
 using ApiParaLocalizarTransporte.Repositories.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
@@ -79,6 +79,13 @@ namespace ApiParaLocalizarTransporte.Controllers
             if (id != paradaUpdate.ParadaId)
             {
                 return BadRequest();
+            }
+
+            var buscarParada = await _unitOfWork.ParadaRepository.GetAsync(pa => pa.ParadaId == id);
+
+            if (buscarParada is null)
+            {
+                return NotFound("Parada não encontrada");
             }
 
             var parada = _mapper.Map<Parada>(paradaUpdate);

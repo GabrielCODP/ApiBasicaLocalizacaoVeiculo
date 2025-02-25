@@ -1,8 +1,8 @@
 using ApiParaLocalizarTransporte.Context;
+using ApiParaLocalizarTransporte.DTOS.MappingDTO;
 using ApiParaLocalizarTransporte.Extensions;
 using ApiParaLocalizarTransporte.Filters;
 using ApiParaLocalizarTransporte.Logging;
-using ApiParaLocalizarTransporte.Models.DTOs.MappingDTO;
 using ApiParaLocalizarTransporte.Repositories;
 using ApiParaLocalizarTransporte.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +32,7 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(mySqlCon
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IParadaRepository, ParadaRepository>();
 builder.Services.AddScoped<ILinhaRepository, LinhaRepository>();
+//builder.Services.AddScoped<IVeiculoRepository, VeiculoRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddAutoMapper(typeof(DadosDTOMappingProfile));
 

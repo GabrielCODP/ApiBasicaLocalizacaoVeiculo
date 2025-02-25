@@ -1,4 +1,4 @@
-﻿namespace ApiParaLocalizarTransporte.Models.DTOs.LinhaDTOs
+﻿namespace ApiParaLocalizarTransporte.DTOS.LinhaDTOs
 {
     public class LinhaResponseDTO
     {

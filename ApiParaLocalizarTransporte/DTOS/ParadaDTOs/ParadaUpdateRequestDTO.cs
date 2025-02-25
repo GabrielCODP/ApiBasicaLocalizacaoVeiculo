@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace ApiParaLocalizarTransporte.Models.DTOs.ParadaDTOs
+namespace ApiParaLocalizarTransporte.DTOS.ParadaDTOs
 {
     public class ParadaUpdateRequestDTO
     {

@@ -4,10 +4,10 @@ using ApiParaLocalizarTransporte.Repositories.Interfaces;
 
 namespace ApiParaLocalizarTransporte.Repositories
 {
-    public class ParadaRepository : Repository<Parada>, IParadaRepository
+    public class PosicaoVeiculoRepository : Repository<PosicaoVeiculo>, IPosicaoVeiculoRepository
     {
-        public ParadaRepository(AppDbContext context) : base(context)
-        {
+        public PosicaoVeiculoRepository(AppDbContext context) : base(context) 
+        { 
         }
     }
 }

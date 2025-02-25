@@ -1,6 +1,4 @@
 ﻿using ApiParaLocalizarTransporte.Models;
-using ApiParaLocalizarTransporte.Models.DTOs.LinhaDTOs;
-using ApiParaLocalizarTransporte.Models.DTOs.ParadaDTOs;
 
 namespace ApiParaLocalizarTransporte.Repositories.Interfaces
 {

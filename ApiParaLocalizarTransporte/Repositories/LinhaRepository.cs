@@ -1,10 +1,7 @@
 ﻿using ApiParaLocalizarTransporte.Context;
 using ApiParaLocalizarTransporte.Models;
-using ApiParaLocalizarTransporte.Models.DTOs.LinhaDTOs;
-using ApiParaLocalizarTransporte.Models.DTOs.ParadaDTOs;
 using ApiParaLocalizarTransporte.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace ApiParaLocalizarTransporte.Repositories
 {
@@ -24,8 +21,6 @@ namespace ApiParaLocalizarTransporte.Repositories
         public async Task<IEnumerable<Linha>> GetLinhasEParadas()
         {
             return await _context.Set<Linha>().AsNoTracking().Include(p => p.Paradas).ToListAsync();
-
-
         }
 
         public Linha InserirParadaNaLinha(Linha linha, Parada parada)

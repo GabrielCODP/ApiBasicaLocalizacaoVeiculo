@@ -1,7 +1,6 @@
-﻿
-using ApiParaLocalizarTransporte.Models.DTOs.ParadaDTOs;
+﻿using ApiParaLocalizarTransporte.DTOS.ParadaDTOs;
 
-namespace ApiParaLocalizarTransporte.Models.DTOs.LinhaDTOs
+namespace ApiParaLocalizarTransporte.DTOS.LinhaDTOs
 {
     public class LinhaEParadaResponseDTO
     {

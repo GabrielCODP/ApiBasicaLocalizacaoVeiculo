@@ -7,6 +7,8 @@ namespace ApiParaLocalizarTransporte.Repositories
     {
         private IParadaRepository? _paradaRepo;
         private ILinhaRepository? _linhaRepo;
+        private IVeiculoRepository? _veiculoRepo;
+        private IPosicaoVeiculoRepository _posicaoVeiculoRepo;
 
         public AppDbContext _context;
 
@@ -32,6 +34,23 @@ namespace ApiParaLocalizarTransporte.Repositories
             get
             {
                 return _linhaRepo = _linhaRepo ?? new LinhaRepository(_context);
+            }
+        }
+
+        public IVeiculoRepository VeiculoRepository
+        {
+            get
+            {
+                return _veiculoRepo = _veiculoRepo ?? new VeiculoRepository(_context);
+            }
+        }
+
+        public IPosicaoVeiculoRepository PosicaoVeiculoRepository
+        {
+            get
+            {
+                return _posicaoVeiculoRepo = 
+                    _posicaoVeiculoRepo ?? new PosicaoVeiculoRepository(_context);
             }
         }
 

@@ -1,11 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
-namespace ApiParaLocalizarTransporte.Models
+namespace ApiParaLocalizarTransporte.DTOS.PosicaoVeiculoDTOs
 {
-    public class PosicaoVeiculo
+    public class PosicaoVeiculoUpdateRequestDTO
     {
-        [Key]
+        [Required(ErrorMessage = "Id é obrigátorio")]
         public int PosicaoVeiculoId { get; set; }
 
         [Required(ErrorMessage = "O valor da latitude é obrigatório")]
@@ -18,7 +18,7 @@ namespace ApiParaLocalizarTransporte.Models
         [Range(-180.0000000, 180.0000000, ErrorMessage = "Não é um valor valido para longitude")]
         public double Longitude { get; set; }
 
+        [Required(ErrorMessage = "Id do veiculo é obrigátorio")]
         public int VeiculoId { get; set; }
-        public Veiculo? Veiculo { get; set; }
     }
 }

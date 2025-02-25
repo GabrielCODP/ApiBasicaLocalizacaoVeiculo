@@ -2,7 +2,7 @@
 
 namespace ApiParaLocalizarTransporte.Repositories.Interfaces
 {
-    public interface IParadaRepository : IRepository<Parada>
+    public interface IPosicaoVeiculoRepository : IRepository<PosicaoVeiculo>
     {
     }
 }

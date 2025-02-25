@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace ApiParaLocalizarTransporte.Models.DTOs.ParadaDTOs
+namespace ApiParaLocalizarTransporte.DTOS.PosicaoVeiculoDTOs
 {
-    public class ParadaResponseDTO
+    public class PosicaoVeiculoResponseDTO
     {
-        public int ParadaId { get; set; }
-        public string? Name { get; set; }
+        public int PosicaoVeiculoId { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
+        public int VeiculoId { get; set; }
     }
 }
